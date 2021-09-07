@@ -1,0 +1,384 @@
+$primaryColor: #52489C;
+$secondaryColor: #4062BB;
+$fontColor: #EBEBEB;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #eaeaea;
+
+}
+
+// ################### SKIP TO MENU ################
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #bf1722;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+img {
+  width: 100%;
+}
+
+// #################### NAV-BAR #######################
+
+.nav-bar {
+  display: flex;
+  background-color: $primaryColor;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 1.2em;
+
+  .brand {
+    user-select: none;
+    color: $fontColor;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    font-weight: 900;
+    z-index: 2;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primaryColor;
+    z-index: 1;
+
+
+    li {
+      a {
+        font-weight: 700;
+        color: $fontColor;
+        text-decoration: none;
+        padding: 44px;
+
+        &:hover {
+          background-color: lighten($color: $primaryColor, $amount: 5%);
+        }
+      }
+    }
+
+    @media screen and (min-width: 680px) {
+      display: flex;
+      position: relative;
+      width: inherit;
+      height: inherit;
+      flex-direction: row;
+      background-color: inherit;
+      z-index: inherit;
+
+      li {
+        a {
+          display: inline-block;
+          padding: 20px;
+        }
+      }
+    }
+  }
+
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: space-around;
+    background-color: inherit;
+    border: 0;
+    cursor: pointer;
+    z-index: 2;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: $fontColor;
+      border-radius: 3px;
+    }
+
+    @media screen and (min-width: 680px) {
+      display: none;
+    }
+  }
+
+  .menu.toggle {
+    display: flex;
+  }
+}
+
+// #################### HERO ########################
+
+.hero {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 280px;
+  margin-bottom: 26px;
+  object-fit: cover;
+  overflow: hidden;
+
+  picture,
+  img {
+    width: 100%;
+  }
+
+  &-description {
+    height: 100%;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2,
+    p {
+      display: block;
+      color: $fontColor;
+      background-color: #000;
+      padding: 5px;
+      margin-bottom: 3px;
+      box-shadow: 1px 1px 2px rgba($color: #000000, $alpha: 0.5);
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    height: 380px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 400px;
+  }
+}
+
+// ####################### CONTENT #################
+
+.restaurants {
+  margin-top: 50px;
+  text-align: center;
+  gap: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  .header {
+    font-weight: 700;
+    text-decoration: underline;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+
+  .restaurant {
+    background-color: #fff;
+    padding: 35px 10px;
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 3px;
+
+    h3 {
+      margin: 20px 0 15px;
+
+      .restaurant-name {
+        font-size: 1.1em;
+        padding: 8px;
+        max-width: 90%;
+        margin: 0 auto;
+        text-decoration: none;
+        color: $primaryColor;
+      }
+    }
+
+    &-image {
+      height: 250px;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.5);
+      border-radius: 5px;
+      margin-bottom: 23px;
+
+      .rating {
+        display: grid;
+        justify-content: right;
+
+        h3 {
+          min-width: 70px;
+          text-align: center;
+          padding: 7px;
+          border-radius: 4px;
+          border-top-left-radius: unset;
+          border-bottom-right-radius: unset;
+          display: inline-block;
+          background-color: $secondaryColor;
+          color: $fontColor;
+        }
+      }
+    }
+
+    &-description {
+      display: -webkit-box;
+      text-align: left;
+      font-size: 0.9em;
+      line-height: 1.5em;
+      overflow: hidden;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+
+      @media screen and (min-width: 760px) {
+        padding-left: 7px;
+        padding-right: 7px;
+      }
+    }
+  }
+
+  .restaurant-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    .restaurant-image {
+      height: 300px;
+    }
+
+    .restaurant-info {
+      text-align: left;
+
+      .categories {
+        display: inline-block;
+        padding: 7px;
+        background-color: $secondaryColor;
+        color: $fontColor;
+        border-radius: 7px;
+      }
+
+      .address {
+        line-height: 2.2em;
+        font-weight: 600;
+      }
+    }
+
+    .menu {
+
+      &-foods,
+      &-drinks {
+        h3 {
+          text-align: left;
+          margin-top: 30px;
+          margin-bottom: 5px;
+          border-bottom: 1px dashed black;
+          padding-left: 4px;
+          padding-bottom: 4px;
+        }
+
+        .item {
+          width: 100%;
+          border-bottom: 1px dashed black;
+          line-height: 2.4em;
+          text-align: center;
+        }
+      }
+    }
+
+    .customer-review {
+      h2 {
+        margin-top: 10px;
+        margin-bottom: 8px;
+      }
+
+      .review {
+        text-align: left;
+        border: 5px solid $primaryColor;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 10px;
+
+        .date {
+          font-size: 0.7em;
+        }
+      }
+    }
+
+    @media screen and (min-width: 650px) {
+      grid-template-columns: 1fr 1fr;
+
+      .menu,
+      .customer-review {
+        h2 {
+          margin-top: 30px;
+          grid-column: 1 / -1;
+        }
+
+        .menu-foods,
+        .menu-drinks {
+          h3 {
+            margin: 0;
+          }
+        }
+
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+  }
+
+  #likeButtonContainer {
+    .like {
+      font-size: 18px;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background-color: $secondaryColor;
+      color: white;
+      border: 0;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  margin-bottom: 50px;
+
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-left: 138px;
+    margin-right: 138px;
+    gap: 13px;
+  }
+}
+
+// ####################### FOOTER ###################
+
+.footer {
+  background-color: $primaryColor;
+  padding: 40px;
+  color: $fontColor;
+  text-align: center;
+  font-size: 0.6em;
+}
